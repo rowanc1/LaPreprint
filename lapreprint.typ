@@ -267,8 +267,8 @@
 
 
   let abstracts
-  if (type(abstract) == "content") {
-    abstracts = (title: "Abstract", content: abstract)
+  if (type(abstract) == "content" or type(abstract) == "string") {
+    abstracts = ((title: "Abstract", content: abstract),)
   } else {
     abstracts = abstract
   }
