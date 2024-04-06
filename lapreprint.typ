@@ -196,6 +196,7 @@
     parbreak()
     box(text(14pt, fill: gray.darken(30%), subtitle))
   }
+  linebreak()
   // Authors and affiliations
   if authors.len() > 0 {
     box(inset: (y: 10pt), {
