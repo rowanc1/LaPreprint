@@ -196,6 +196,7 @@
     parbreak()
     box(text(14pt, fill: gray.darken(30%), subtitle))
   }
+  linebreak()
   // Authors and affiliations
   if authors.len() > 0 {
     box(inset: (y: 10pt), {
@@ -267,8 +268,8 @@
 
 
   let abstracts
-  if (type(abstract) == "content") {
-    abstracts = (title: "Abstract", content: abstract)
+  if (type(abstract) == "content" or type(abstract) == "string") {
+    abstracts = ((title: "Abstract", content: abstract),)
   } else {
     abstracts = abstract
   }
