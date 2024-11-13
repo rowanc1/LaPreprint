@@ -80,8 +80,8 @@
   set page(
     paper-size,
     margin: (left: 25%),
-    header: locate(loc => {
-      if(loc.page() == 1) {
+    header: context {
+      if(here().position().page == 1) {
         let headers = (
           if (open-access) {smallcaps[Open Access]},
           if (doi != none) { link("https://doi.org/" + doi, "https://doi.org/" + doi)}
@@ -92,8 +92,8 @@
           (short-title, short-citation).join(spacer)
         ))
       }
-    }),
-    footer: block(
+    },
+    footer: context block(
       width: 100%,
       stroke: (top: 1pt + gray),
       inset: (top: 8pt, right: 2pt),
@@ -109,7 +109,7 @@
             #text(
               size: 9pt, fill: gray.darken(50%)
             )[
-              #counter(page).display() of #locate((loc) => {counter(page).final(loc).first()})
+              #counter(page).display() of #counter(page).final().first()
             ]
           ]
         )
@@ -129,9 +129,9 @@
 
   // Configure headings.
   set heading(numbering: heading-numbering)
-  show heading: it => locate(loc => {
+  show heading: it => {
     // Find out the final number of the heading counter.
-    let levels = counter(heading).at(loc)
+    let levels = counter(heading).at(here())
     set text(10pt, weight: 400)
     if it.level == 1 [
       // First-level headings are centered smallcaps.
@@ -168,7 +168,7 @@
       }
       _#(it.body):_
     ]
-  })
+  }
 
 
   if (logo != none) {
@@ -228,7 +228,7 @@
     dy: -10pt,
     box(width: 27%, {
       if (kind != none) {
-        show par: set block(spacing: 0em)
+        set par(spacing: 0em)
         text(11pt, fill: theme, weight: "semibold", smallcaps(kind))
         parbreak()
       }
@@ -292,7 +292,7 @@
   }
   v(10pt)
 
-  show par: set block(spacing: 1.5em)
+  set par(spacing: 1.5em)
 
   // Display the paper's contents.
   body
