@@ -228,7 +228,7 @@
     dy: -10pt,
     box(width: 27%, {
       if (kind != none) {
-        show par: set block(spacing: 0em)
+        set par(spacing: 0em)
         text(11pt, fill: theme, weight: "semibold", smallcaps(kind))
         parbreak()
       }
@@ -292,7 +292,7 @@
   }
   v(10pt)
 
-  show par: set block(spacing: 1.5em)
+  set par(spacing: 1.5em)
 
   // Display the paper's contents.
   body
